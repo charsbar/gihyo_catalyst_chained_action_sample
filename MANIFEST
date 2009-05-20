@@ -4,6 +4,7 @@ lib/MyApp/Controller/Entry.pm
 lib/MyApp/Controller/Error.pm
 lib/MyApp/Controller/Home.pm
 lib/MyApp/Controller/Root.pm
+lib/MyApp/Controller/Session.pm
 lib/MyApp/Model/DB.pm
 lib/MyApp/View/HTML.pm
 Makefile.PL
