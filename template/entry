@@ -1,0 +1,13 @@
+% my ($self, $c) = @_;
+<html>
+<head>
+</head>
+<body>
+<div>
+% my $entry = $c->stash->{entry};
+
+
+
+</div>
+</body>
+</html>
