@@ -3,7 +3,7 @@ package MyApp::Controller::Entry;
 use Moose;
 BEGIN { extends 'Catalyst::Controller'; }
 
-sub entry : Chained('/') PathPart CaptureArgs(1) {
+sub entry : Chained('/root') PathPart CaptureArgs(1) {
     my ($self, $c, $id) = @_;
 
     $c->stash->{entry} = $c->model('DB')->entry($id);

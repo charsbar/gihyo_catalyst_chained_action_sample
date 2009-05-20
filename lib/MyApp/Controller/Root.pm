@@ -5,6 +5,10 @@ BEGIN { extends 'Catalyst::Controller'; }
 
 __PACKAGE__->config->{namespace} = '';
 
+sub root : Chained('/') PathPart('') CaptureArgs(0) {
+    my ($self, $c) = @_;
+}
+
 sub default : Private {
     my ($self, $c) = @_;
 

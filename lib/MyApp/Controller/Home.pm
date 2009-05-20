@@ -3,7 +3,7 @@ package MyApp::Controller::Home;
 use Moose;
 BEGIN { extends 'Catalyst::Controller'; }
 
-sub latest_entries : Chained('/') PathPart('') Args(0) {
+sub latest_entries : Chained('/root') PathPart('') Args(0) {
     my ($self, $c) = @_;
 
     $c->stash->{entries}  = $c->model('DB')->latest_entries(5);
