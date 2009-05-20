@@ -24,7 +24,7 @@ sub read : Chained('entry') PathPart Args(0) {
 sub create : Chained('entry') PathPart Args(0) {
     my ($self, $c) = @_;
 
-    $c->forward('/error/unauthorized') unless $c->user_exists;
+    $c->forward('/error/unauthorized') unless $c->stash->{user};
 
     if (uc $c->req->method eq 'POST') {
         $c->stash->{entry}->create($c->req->params);
