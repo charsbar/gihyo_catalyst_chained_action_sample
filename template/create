@@ -1,0 +1,12 @@
+% my ($self, $c) = @_;
+<html>
+<head>
+</head>
+<body>
+<form method="POST">
+
+
+<p><input type="submit" name="post" value="post"></p>
+</form>
+</body>
+</html>
