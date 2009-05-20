@@ -1,0 +1,14 @@
+% my ($self, $c) = @_;
+<html>
+<head>
+</head>
+<body>
+% foreach my $entry (@{ $c->stash->{entries} || [] }) {
+<div>
+
+
+
+</div>
+% }
+</body>
+</html>
