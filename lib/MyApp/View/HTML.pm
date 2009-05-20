@@ -8,7 +8,7 @@ use Path::Extended;
 sub process {
     my ($self, $c) = @_;
 
-    my $output = $self->render($c)) {
+    my $output = $self->render($c);
     $c->res->body($output);
     $c->res->content_type('text/html');
 }
