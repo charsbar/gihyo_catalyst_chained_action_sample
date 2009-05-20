@@ -6,6 +6,7 @@ lib/MyApp/Controller/Home.pm
 lib/MyApp/Controller/Root.pm
 lib/MyApp/Controller/Session.pm
 lib/MyApp/Model/DB.pm
+lib/MyApp/Model/Session.pm
 lib/MyApp/View/HTML.pm
 Makefile.PL
 MANIFEST			This list of files
