@@ -4,11 +4,11 @@ use Moose;
 extends 'Catalyst::Model';
 
 sub latest_entries {
-  my ($self, $num) = @_;
+    my ($self, $num) = @_;
 
-  my @entries;
+    my @entries;
 
-  return \@entries;
+    return \@entries;
 }
 
 __PACKAGE__->meta->make_immutable;
