@@ -17,11 +17,10 @@ sub latest_entries {
     while( my $file = $rootdir->next ) {
         next if $file->is_dir;
         my $entry = [ $file, $file->mtime ];
-        if ( @entries < $num ) {
-            push @entries, $entry;
-        }
-        else {
-            @entries = (sort { $b->[1] <=> $a->[1] } (@entries, $entry))[0..$num - 1];
+        push @entries, $entry;
+        my $max = @entries < $num ? @entries : $num;
+        if ( @entries > 1 ) {
+            @entries = (sort { $b->[1] <=> $a->[1] } @entries)[0 .. $max - 1];
         }
     }
     return [
