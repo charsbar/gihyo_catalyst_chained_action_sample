@@ -11,7 +11,8 @@ has 'file' => (
     trigger => sub {
         my ($self, $file) = @_;
         $file->exists ? $self->read : $self->clear;
-    }
+    },
+    handles => [qw( remove )],
 );
 
 sub clear {

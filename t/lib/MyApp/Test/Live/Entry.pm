@@ -6,13 +6,20 @@ use Test::Classy::Base;
 use Catalyst::Test 'MyApp';
 use HTTP::Status;
 use HTTP::Request;
+use MyApp::Model::DB;
 
 sub entry_read : Tests(2) {
     my $class = shift;
 
+    my $model = MyApp::Model::DB->new;
+    my $entry = $model->entry('1');
+    $entry->create({ body => 'foo', author => 'admin' });
+
     my ($res, $c) = ctx_request('/entry/1');
     ok $res->code == RC_OK, $class->message('status code is correct');
     ok $c->stash->{template} eq 'entry', $class->message('template is correct');
+
+    $entry->remove;
 }
 
 sub entry_create_unauthorized : Test {
