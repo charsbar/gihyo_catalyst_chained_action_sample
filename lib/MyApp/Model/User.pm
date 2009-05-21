@@ -11,11 +11,17 @@ has 'root' => (
     default => $ENV{MYAPP_TEST} ? 't/user' : 'user',
 );
 
-sub get {
+sub _item {
     my ($self, $id) = @_;
 
     my $file = file($self->root, $id);
-    my $user = MyApp::Item::User->new(file => $file);
+    return MyApp::Item::User->new(file => $file);
+}
+
+sub get {
+    my ($self, $id) = @_;
+
+    my $user = $self->_item($id);
 
     return unless $user->exists;
     return $user;
@@ -26,8 +32,7 @@ sub authenticate {
 
     my $id = $params->{id} or return;
 
-    my $file = file($self->root, $id);
-    my $user = MyApp::Item::User->new(file => $file);
+    my $user = $self->_item($id);
 
     return unless $user->exists;
     return unless $user->challenge_password($params->{password});

@@ -12,11 +12,17 @@ has 'root' => (
     default => $ENV{MYAPP_TEST} ? 't/session' : 'session',
 );
 
-sub get {
+sub _item {
     my ($self, $id) = @_;
 
     my $file = file($self->root, $id);
-    my $session = MyApp::Item::Session->new(file => $file);
+    return MyApp::Item::Session->new(file => $file);
+}
+
+sub get {
+    my ($self, $id) = @_;
+
+    my $session = $self->_item($id);
 
     return unless $session->exists;
     return $session;
@@ -27,8 +33,7 @@ sub set {
 
     my $id = $params->{id} || md5_hex(time.rand().$$);
 
-    my $file = file($self->root, $id);
-    my $session = MyApp::Item::Session->new(file => $file);
+    my $session = $self->_item($id);
     $session->create($params);
     return $session->id;
 }
@@ -36,8 +41,7 @@ sub set {
 sub remove {
     my ($self, $id) = @_;
 
-    my $file = file($self->root, $id);
-    my $session = MyApp::Item::Session->new(file => $file);
+    my $session = $self->_item($id);
     $session->remove;
 }
 
