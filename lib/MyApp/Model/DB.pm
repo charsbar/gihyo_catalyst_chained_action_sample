@@ -5,6 +5,8 @@ extends 'Catalyst::Model';
 use MyApp::Item::Entry;
 use Path::Extended;
 
+has 'root' => (is => 'rw', isa => 'Str', default => 'data');
+
 sub latest_entries {
     my ($self, $num) = @_;
 
@@ -23,14 +25,14 @@ sub latest_entries {
         }
     }
     return [
-        map { Typecase::Item::Entry->new(file => $_->[0]) } @entries
+        map { MyApp::Item::Entry->new(file => $_->[0]) } @entries
     ];
 }
 
 sub entry {
     my ($self, $id) = @_;
 
-    my $file = file('data', $id);
+    my $file = file($self->root, $id);
     my $entry = MyApp::Item::Entry->new(file => $file);
 
     return $entry;
