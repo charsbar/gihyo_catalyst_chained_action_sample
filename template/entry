@@ -5,9 +5,9 @@
 <body>
 <div>
 % my $entry = $c->stash->{entry};
-
-
-
+<pre><%= $entry->body %></pre>
+<p>by <%= $entry->author %></p>
+<p><a href="<%= $c->uri_for_action('/entry/default_read', [ $entry->id ]) %>">permalink</a></p>
 </div>
 </body>
 </html>
