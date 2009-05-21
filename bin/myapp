@@ -1,0 +1,9 @@
+#!perl
+
+use strict;
+use warnings;
+use FindBin;
+use lib "$FindBin::Bin/../lib";
+use CLI::Dispatch;
+
+CLI::Dispatch->run('MyApp::Script');
