@@ -18,6 +18,16 @@ sub default_read : Chained('entry') PathPart('') Args(0) {
 sub read : Chained('entry') PathPart Args(0) {
     my ($self, $c) = @_;
 
+    if (!$c->stash->{entry}->exists) {
+        if ($c->stash->{user}) {
+            $c->forward('create');
+        }
+        else {
+            $c->forward('/error/not_found');
+        }
+        $c->detach;
+    }
+
     $c->stash->{template} = 'entry';
 }
 
