@@ -1,7 +1,6 @@
 % my ($self, $c) = @_;
 <html>
-<head>
-</head>
+<%=r do { local $c->stash->{template} = 'head'; $self->render($c) } %>
 <body>
 <form method="POST">
 

@@ -1,0 +1,4 @@
+% my ($self, $c) = @_;
+<head>
+<title>my sample application</title>
+</head>
