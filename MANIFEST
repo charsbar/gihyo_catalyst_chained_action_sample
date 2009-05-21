@@ -1,5 +1,4 @@
 Changes
-data/1
 lib/MyApp.pm
 lib/MyApp/Controller/Auth.pm
 lib/MyApp/Controller/Entry.pm
@@ -8,6 +7,7 @@ lib/MyApp/Controller/Home.pm
 lib/MyApp/Controller/Root.pm
 lib/MyApp/Controller/Session.pm
 lib/MyApp/Item/Entry.pm
+lib/MyApp/Item/Session.pm
 lib/MyApp/Item/User.pm
 lib/MyApp/Model/DB.pm
 lib/MyApp/Model/Session.pm
