@@ -4,8 +4,9 @@
 <body>
 <%=r do { local $c->stash->{template} = 'banner'; $self->render($c) } %>
 <form method="POST">
+<textarea name="body" rows="30" cols="50"></textarea>
 
-
+<input type="hidden" name="author" value="<%= $c->stash->{user}->name %>">
 <p><input type="submit" name="post" value="post"></p>
 </form>
 </body>
