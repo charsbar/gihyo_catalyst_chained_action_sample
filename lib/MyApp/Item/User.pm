@@ -7,12 +7,13 @@ use Digest::MD5 'md5_hex';
 has 'name'     => (is => 'rw', isa => 'Str', default => '');
 has 'password' => (is => 'rw', isa => 'Str', default => '');
 
-around 'create' => sub {
+sub create {
     my ($self, $params) = @_;
 
     $params->{password} = md5_hex($params->{password});
-    inner();
-};
+    $self->_set($params);
+    $self->save;
+}
 
 sub _set {
     my ($self, $params) = @_;
