@@ -8,9 +8,23 @@ use Path::Extended;
 sub latest_entries {
     my ($self, $num) = @_;
 
-    my @entries;
+    $num ||= 5;
 
-    return \@entries;
+    my @entries;
+    my $rootdir = dir($self->root);
+    while( my $file = $rootdir->next ) {
+        next if $file->is_dir;
+        my $entry = [ $file, $file->mtime ];
+        if ( @entries < $num ) {
+            push @entries, $entry;
+        }
+        else {
+            @entries = (sort { $b->[1] <=> $a->[1] } (@entries, $entry))[0..$num - 1];
+        }
+    }
+    return [
+        map { Typecase::Item::Entry->new(file => $_->[0]) } @entries
+    ];
 }
 
 sub entry {
