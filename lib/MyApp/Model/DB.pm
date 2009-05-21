@@ -2,6 +2,8 @@ package MyApp::Model::DB;
 
 use Moose;
 extends 'Catalyst::Model';
+use MyApp::Item::Entry;
+use Path::Extended;
 
 sub latest_entries {
     my ($self, $num) = @_;
@@ -14,7 +16,8 @@ sub latest_entries {
 sub entry {
     my ($self, $id) = @_;
 
-    my $entry;
+    my $file = file('data', $id);
+    my $entry = MyApp::Item::Entry->new(file => $file);
 
     return $entry;
 }
