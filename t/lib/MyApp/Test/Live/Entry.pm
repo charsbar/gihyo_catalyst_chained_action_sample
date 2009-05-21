@@ -7,6 +7,8 @@ use Catalyst::Test 'MyApp';
 use HTTP::Status;
 use HTTP::Request;
 use MyApp::Model::DB;
+use MyApp::Model::User;
+use MyApp::Model::Session;
 
 sub entry_read : Tests(2) {
     my $class = shift;
@@ -34,6 +36,14 @@ sub entry_create_unauthorized : Test {
 sub entry_create_authorized : Tests(2) {
     my $class = shift;
 
+    my $user_model = MyApp::Model::User->new;
+    my $user = $user_model->_item('admin');
+    $user->create({ name => 'admin', password => 'foo' });
+
+    my $session_model = MyApp::Model::Session->new;
+    my $session = $session_model->_item('foo');
+    $session->create({ data => { user_id => 'admin' }});
+
     my $req = HTTP::Request->new(GET => '/entry/1/create');
 
     $req->header('Cookie' => 'session=foo');
@@ -41,6 +51,9 @@ sub entry_create_authorized : Tests(2) {
     my ($res, $c) = ctx_request($req);
     ok $res->code == RC_OK, $class->message('status code is correct');
     ok $c->stash->{template} eq 'create', $class->message('template is correct');
+
+    $user->remove;
+    $session->remove;
 }
 
 1;
