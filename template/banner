@@ -1,0 +1,2 @@
+% my ($self, $c) = @_;
+<h1><a href="<%= $c->uri_for_action('/home/latest_entries'); %>">My Sample Application</a></h1>

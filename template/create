@@ -2,6 +2,7 @@
 <html>
 <%=r do { local $c->stash->{template} = 'head'; $self->render($c) } %>
 <body>
+<%=r do { local $c->stash->{template} = 'banner'; $self->render($c) } %>
 <form method="POST">
 
 
