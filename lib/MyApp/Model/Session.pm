@@ -6,7 +6,11 @@ use MyApp::Item::Session;
 use Path::Extended;
 use Digest::MD5 'md5_hex';
 
-has 'root' => (is => 'rw', isa => 'Str', default => 'session');
+has 'root' => (
+    is      => 'rw',
+    isa     => 'Str',
+    default => $ENV{MYAPP_TEST} ? 't/session' : 'session',
+);
 
 sub get {
     my ($self, $id) = @_;

@@ -5,7 +5,11 @@ extends 'Catalyst::Model';
 use MyApp::Item::User;
 use Path::Extended;
 
-has 'root' => (is => 'rw', isa => 'Str', default => 'user');
+has 'root' => (
+    is      => 'rw',
+    isa     => 'Str',
+    default => $ENV{MYAPP_TEST} ? 't/user' : 'user',
+);
 
 sub get {
     my ($self, $id) = @_;

@@ -5,7 +5,11 @@ extends 'Catalyst::Model';
 use MyApp::Item::Entry;
 use Path::Extended;
 
-has 'root' => (is => 'rw', isa => 'Str', default => 'data');
+has 'root' => (
+    is      => 'rw',
+    isa     => 'Str',
+    default => $ENV{MYAPP_TEST} ? 't/data' : 'data',
+);
 
 sub latest_entries {
     my ($self, $num) = @_;
