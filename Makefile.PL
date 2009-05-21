@@ -7,6 +7,7 @@ all_from 'lib\MyApp.pm';
 
 requires 'Catalyst::Runtime' => '5.80004';
 requires 'Catalyst::Action::RenderView';
+requires 'CLI::Dispatch' => '0.03';
 requires 'HTTP::Status';
 requires 'HTTP::Request';
 requires 'Path::Extended' => '0.12';
