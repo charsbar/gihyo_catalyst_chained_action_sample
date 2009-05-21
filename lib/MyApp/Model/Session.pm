@@ -18,6 +18,11 @@ sub get {
     return $session;
 }
 
+sub set {
+    my ($self, $params) = @_;
+
+}
+
 sub remove {
     my ($self, $id) = @_;
 
