@@ -45,4 +45,6 @@ sub create : Chained('entry') PathPart Args(0) {
     $c->stash->{template} = 'create';
 }
 
+__PACKAGE__->meta->make_immutable;
+
 1;
