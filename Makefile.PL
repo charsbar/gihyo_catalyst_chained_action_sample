@@ -3,7 +3,7 @@ use warnings;
 use inc::Module::Install;
 
 name 'MyApp';
-all_from 'lib\MyApp.pm';
+all_from 'lib/MyApp.pm';
 
 requires 'Catalyst::Runtime' => '5.80004';
 requires 'Catalyst::Action::RenderView';
