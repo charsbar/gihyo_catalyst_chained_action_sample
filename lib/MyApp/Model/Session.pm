@@ -25,7 +25,7 @@ sub set {
 
     my $file = file($self->root, $id);
     my $session = MyApp::Item::Session->new(file => $file);
-    $session->save($params);
+    $session->create($params);
     return $session->id;
 }
 
