@@ -22,9 +22,10 @@ script/myapp_cgi.pl
 script/myapp_fastcgi.pl
 script/myapp_server.pl
 t/00_load.t
-t/entry.t
-t/home.t
 t/item_entry.t
+t/lib/MyApp/Test/Live/Entry.pm
+t/lib/MyApp/Test/Live/Home.pm
+t/live.t
 template/banner
 template/create
 template/entry
