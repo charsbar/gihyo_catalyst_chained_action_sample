@@ -38,7 +38,7 @@ sub create : Chained('entry') PathPart Args(0) {
 
     if (uc $c->req->method eq 'POST') {
         $c->stash->{entry}->create($c->req->params);
-        $c->res->redirect($c->uri_for('/'));
+        $c->res->redirect($c->uri_for_action('/entry/default_read', [ $c->stash->{entry}->id ]));
         $c->detach;
     }
 
