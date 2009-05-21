@@ -5,9 +5,9 @@
 <%=r do { local $c->stash->{template} = 'banner'; $self->render($c) } %>
 % foreach my $entry (@{ $c->stash->{entries} || [] }) {
 <div>
-
-
-
+<pre><%= $entry->body %></pre>
+<p>by <%= $entry->author %></p>
+<p><a href="<%= $c->uri_for_action('/entry/default_read', [ $entry->id ]) %>">permalink</a></p>
 </div>
 % }
 </body>
