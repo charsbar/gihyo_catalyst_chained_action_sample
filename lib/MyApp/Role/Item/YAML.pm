@@ -17,9 +17,9 @@ has 'file' => (
 sub clear {
     my $self = shift;
 
-    foreach my $attribute ($self->meta->get_attribute_list) {
-        next if $attribute eq 'file';
-        $self->$attribute('');
+    foreach my $attribute ($self->meta->get_all_attributes) {
+        next unless $attribute->has_default;
+        $attribute->set_value($self, $attribute->default($self));
     }
 }
 
