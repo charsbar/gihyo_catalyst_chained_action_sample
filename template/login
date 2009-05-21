@@ -1,0 +1,13 @@
+% my ($self, $c) = @_;
+<html>
+<%=r do { local $c->stash->{template} = 'head'; $self->render($c); } %>
+<body>
+<%=r do { local $c->stash->{template} = 'banner'; $self->render($c); } %>
+<form method="POST">
+<input type="text" name="id" value=""><br>
+<input type="password" name="password" value=""><br>
+<input type="submit" name="submit" value="login"><br>
+<input type="hidden" name="return_path" value="<%= $c->stash->{return_path} %>">
+</form>
+</body>
+</html>
