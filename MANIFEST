@@ -5,6 +5,7 @@ lib/MyApp/Controller/Error.pm
 lib/MyApp/Controller/Home.pm
 lib/MyApp/Controller/Root.pm
 lib/MyApp/Controller/Session.pm
+lib/MyApp/Item/Entry.pm
 lib/MyApp/Model/DB.pm
 lib/MyApp/Model/Session.pm
 lib/MyApp/Model/User.pm
@@ -19,6 +20,7 @@ script/myapp_server.pl
 t/00_load.t
 t/entry.t
 t/home.t
+t/item_entry.t
 template/create
 template/entry
 template/home
